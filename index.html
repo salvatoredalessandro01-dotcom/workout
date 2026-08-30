@@ -241,48 +241,48 @@ var DBRAW=[
 function mkDB(a){return a.map(function(r,i){return {id:"db"+i,g:r[0],n:r[1],s:r[2],reps:r[3],rest:r[4],sh:r[5],note:r[6]};});}
 var DB=mkDB(DBRAW);
 
+var PROGRAM_VERSION="2026-09";
 var PRESET={order:["A","B","C","D"],week:{MO:"A",TU:"B",WE:null,TH:"C",FR:"D",SA:null,SU:null},sessions:{
 A:{title:"Petto + Bicipiti",groups:["Petto","Bicipiti"],ex:[
- {n:"Spinte inclinata 30 gradi manubri (presa neutra)",sh:"ok",reps:["12","10","8","6"],rest:[90,90,120,120]},
- {n:"Spinte piana manubri",sh:"ok",reps:["10","8","8","6"],rest:[90,90,120,120]},
- {n:"Croci ai cavi / pec deck (allungamento)",sh:"cautela",reps:["8-10","8-10","8-10"],rest:90},
- {n:"Croci ai cavi dall'alto verso il basso",sh:"ok",reps:["10-12","10-12","10-12"],rest:60},
- {n:"Curl panca Scott (gomito avanti)",sh:"ok",reps:["12","10","8","6"],rest:60},
- {n:"Hammer curl (manubri)",sh:"ok",reps:["10-12","10-12","10-12"],rest:60},
- {n:"Curl ai cavi in picco",sh:"ok",reps:["12","12","12"],rest:60},
- {n:"Addominali",sh:"ok",reps:["a scelta"],rest:45}]},
-B:{title:"Quadricipiti + Deltoidi posteriori",groups:["Quadricipiti","Post./Trapezi"],ex:[
- {n:"Chair (riscaldamento)",sh:"ok",reps:["4'"],rest:60},
- {n:"Calf press",sh:"ok",reps:["20","15","12","10"],rest:60},
- {n:"Adductor",sh:"ok",reps:["10","10","10"],rest:60},
- {n:"Hack squat",sh:"ok",reps:["12","10","8","6"],rest:[90,90,120,120]},
- {n:"Leg press",sh:"ok",reps:["10","10","10"],rest:90},
- {n:"Leg extension",sh:"ok",reps:["12","12","12"],rest:60},
- {n:"Face pull",sh:"ok",reps:["10","10","10","10"],rest:60}]},
+ {n:"Spinte bilanciere panca inclinata",sh:"cautela",reps:["12","10","8","6"],rest:[90,90,120,120]},
+ {n:"Spinte manubri su panca piana",sh:"ok",reps:["10","8","6","6"],rest:[90,90,120,120]},
+ {n:"Pec deck",sh:"cautela",reps:["10","10","10"],rest:[90,90,120]},
+ {n:"Croci ai cavi alti",sh:"ok",reps:["12","12","12"],rest:[60,60,120]},
+ {n:"Curl manubri panca 45",sh:"cautela",reps:["12","10","8","6"],rest:[60,90,90,90]},
+ {n:"Hammer curl",sh:"ok",reps:["10","10","10"],rest:[90,90,120]},
+ {n:"Curl barretta ai cavi",sh:"ok",reps:["12","12","12"],rest:[60,60,60]}]},
+B:{title:"Quadricipiti + Petto/Posteriori",groups:["Quadricipiti","Petto","Post./Trapezi"],ex:[
+ {n:"Calf Press",sh:"ok",reps:["20","15","12","10"],rest:[60,60,60,60]},
+ {n:"Adductor machine",sh:"ok",reps:["10","10","10"],rest:[60,60,60]},
+ {n:"Hack Squat",sh:"ok",reps:["12","10","8","6"],rest:[90,90,120,120]},
+ {n:"Leg Press",sh:"ok",reps:["10","8","6","6"],rest:[90,90,120,120]},
+ {n:"Lex extension",sh:"ok",reps:["12","12","12"],rest:[60,60,90]},
+ {n:"Croci ai cavi",sh:"ok",reps:["10","10","10"],rest:[60,60,60]},
+ {n:"Pec back",sh:"ok",reps:["12","12","12"],rest:[60,60,60]}]},
 C:{title:"Spalle + Tricipiti",groups:["Spalle","Tricipiti"],ex:[
- {n:"Spinte manubri inclinata 60 gradi (presa neutra)",sh:"ok",reps:["12","10","8","6"],rest:[90,90,120,120]},
- {n:"Alzate laterali (scaption, full can)",sh:"cautela",reps:["12","10","8","6"],rest:[60,60,90,90]},
- {n:"Reverse pec deck (pollici in su)",sh:"ok",reps:["12","12","12"],rest:60},
- {n:"Alzate laterali parziali 0-45 gradi (finisher)",sh:"ok",reps:["30-40","30-40"],rest:45},
- {n:"Panca stretta al MP",sh:"ok",reps:["12","10","8","6"],rest:[60,60,90,90]},
- {n:"French press manubri",sh:"cautela",reps:["10","8","8","6"],rest:90},
- {n:"Push down barretta, presa inversa",sh:"ok",reps:["12","12","12"],rest:60}]},
+ {n:"Lento avanti multipower",sh:"rischio",reps:["12","10","8","6"],rest:[90,90,120,120]},
+ {n:"Spinte manubri inclinata 60 presa neutra",sh:"ok",reps:["10","8","6","6"],rest:[90,90,120,120]},
+ {n:"Alzate laterali manubri",sh:"cautela",reps:["10","10","10"],rest:[90,90,120]},
+ {n:"Alzate laterali da seduto braccia tese",sh:"cautela",reps:["12","12","12"],rest:[60,60,120]},
+ {n:"Panca stretta al multipower",sh:"ok",reps:["12","10","8","6"],rest:[60,90,90,90]},
+ {n:"French press quadbar",sh:"cautela",reps:["10","10","10"],rest:[90,90,120]},
+ {n:"Push down cavi o maniglie separate",sh:"ok",reps:["12","12","12"],rest:[60,60,60]}]},
 D:{title:"Femorali + Schiena",groups:["Femorali","Schiena"],ex:[
- {n:"Good morning",sh:"ok",reps:["12","10","10","8"],rest:[60,60,90,90]},
+ {n:"Good morning",sh:"ok",reps:["12","10","10","8"],rest:[60,90,90,120]},
  {n:"Stacco rumeno",sh:"ok",reps:["12","10","8","6"],rest:[90,90,120,120]},
- {n:"Leg curl",sh:"ok",reps:["10","10","10"],rest:90},
- {n:"Rematore manubrio 1 braccio, appoggio panca",sh:"ok",reps:["12","10","8","6"],rest:60,note:"per lato"},
- {n:"Lat machine avanti, presa a triangolo",sh:"ok",reps:["10","8","8","6"],rest:90},
- {n:"Rowing pulley basso (pausa 1\u2033 al picco)",sh:"ok",reps:["10","10","10"],rest:60},
- {n:"Shrugs busto in avanti (inclinata ~30 gradi)",sh:"ok",reps:["12","12","12"],rest:60}]}
+ {n:"Leg curl disteso",sh:"ok",reps:["10","10","10"],rest:[90,90,120]},
+ {n:"Rematore bilanciere",sh:"ok",reps:["12","10","8","6"],rest:[90,90,120,120]},
+ {n:"Lat machine presa stretta",sh:"ok",reps:["10","8","6","6"],rest:[90,90,120,120]},
+ {n:"Rowing machine",sh:"ok",reps:["10","10","10"],rest:[90,90,120]},
+ {n:"Scrollate manubri petto su panca 30",sh:"ok",reps:["12","12","12"],rest:[60,60,60]}]}
 }};
 
 var DAYS=[["MO","Lun"],["TU","Mar"],["WE","Mer"],["TH","Gio"],["FR","Ven"],["SA","Sab"],["SU","Dom"]];
 var KEY="scheda_builder_v1";
 function expand(ex){var sets=ex.reps.map(function(rp,i){return {reps:String(rp),rest:(Array.isArray(ex.rest)?ex.rest[i]:ex.rest),load:""};});return {n:ex.n,sh:ex.sh||"ok",note:ex.note||"",sets:sets};}
-function defaultState(){var s={week:JSON.parse(JSON.stringify(PRESET.week)),order:PRESET.order.slice(),sessions:{},customDB:[],log:[]};PRESET.order.forEach(function(id){var ps=PRESET.sessions[id];s.sessions[id]={title:ps.title,groups:ps.groups.slice(),ex:ps.ex.map(expand)};});return s;}
+function defaultState(){var s={week:JSON.parse(JSON.stringify(PRESET.week)),order:PRESET.order.slice(),sessions:{},customDB:[],log:[],pv:PROGRAM_VERSION};PRESET.order.forEach(function(id){var ps=PRESET.sessions[id];s.sessions[id]={title:ps.title,groups:ps.groups.slice(),ex:ps.ex.map(expand)};});return s;}
 var S,hasLS=true;
-try{var raw=localStorage.getItem(KEY);S=raw?JSON.parse(raw):defaultState();localStorage.setItem("__t","1");localStorage.removeItem("__t");}catch(e){hasLS=false;S=defaultState();}if(!S.log)S.log=[];
+try{var raw=localStorage.getItem(KEY);S=raw?JSON.parse(raw):defaultState();localStorage.setItem("__t","1");localStorage.removeItem("__t");}catch(e){hasLS=false;S=defaultState();}if(!S.log)S.log=[];if(S.pv!==PROGRAM_VERSION){var __d=defaultState();S.sessions=__d.sessions;S.order=__d.order;S.week=__d.week;S.pv=PROGRAM_VERSION;save();}
 function save(){if(!hasLS)return;try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){hasLS=false;}}
 function effDB(){return DB.concat((S.customDB||[]).map(function(x,i){return {id:"cu"+i,g:x.g,n:x.n,s:x.s,reps:x.reps,rest:x.rest,sh:x.sh,note:x.note||""};}));}
 
