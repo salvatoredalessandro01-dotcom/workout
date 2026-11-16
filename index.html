@@ -27,7 +27,7 @@ main{padding:10px 12px 16px;}
 .exname{font-size:15.5px;font-weight:700;line-height:1.2;flex:1;}
 .dot{width:9px;height:9px;border-radius:50%;flex:none;}
 .dot.ok{background:var(--ok);}.dot.cautela{background:var(--warn);}.dot.rischio{background:var(--risk);}
-.setline{display:grid;grid-template-columns:26px 1fr auto auto;gap:8px;align-items:center;padding:7px 14px;border-top:1px solid var(--line);}
+.setline{display:grid;grid-template-columns:22px 1fr auto auto auto;gap:8px;align-items:center;padding:7px 14px;border-top:1px solid var(--line);}
 .setline .si{font-size:12px;font-weight:700;color:var(--muted);}
 .setline .rp{font-size:14px;font-weight:600;}
 .setline .rc{font-size:12.5px;color:var(--muted);}
@@ -35,6 +35,14 @@ main{padding:10px 12px 16px;}
 .kg.f{border-color:var(--olive);}
 .kg input{width:42px;border:0;background:transparent;font-size:16px;font-weight:700;text-align:right;outline:none;color:var(--ink);padding:0;}
 .kg .u{font-size:11px;color:var(--muted);font-weight:700;}
+.kg.rr input{width:26px;}
+.up{font-size:10.5px;font-weight:800;color:#fff;background:var(--olive);border-radius:20px;padding:3px 8px;white-space:nowrap;}
+.meso{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px 10px;margin:0 0 10px;}
+.meso .mt{flex:1;font-size:13.5px;font-weight:800;color:var(--olive-d);}
+.meso .ms{font-size:11.5px;font-weight:600;color:var(--muted);margin-top:2px;}
+.meso.dl{background:#FBF2DD;border-color:#E7D3A1;}
+.planrow{display:grid;grid-template-columns:repeat(5,1fr) auto;gap:5px;align-items:center;margin-top:4px;}
+.planrow input{border:1.5px solid var(--line);border-radius:8px;padding:6px 2px;font-size:15px;text-align:center;background:#fff;color:var(--ink);width:100%;}
 .rest-off{font-size:11px;color:var(--muted);}
 .tabbar{position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;background:rgba(244,243,236,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);}
 .tab{flex:1;background:none;border:0;padding:9px 2px 8px;color:var(--muted);font-size:11px;font-weight:600;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;}
@@ -75,7 +83,7 @@ main{padding:10px 12px 16px;}
 .exedit .ehd{display:flex;align-items:center;gap:8px;}
 .exedit .ehd .nm{font-weight:700;font-size:14.5px;flex:1;}
 .iconbtn{background:#EEF0E6;border:0;border-radius:8px;width:30px;height:30px;font-size:15px;color:var(--olive-d);cursor:pointer;}
-.setedit{display:grid;grid-template-columns:22px 1fr 1fr 30px;gap:6px;align-items:center;margin-top:7px;}
+.setedit{display:grid;grid-template-columns:34px 1fr 1fr 30px;gap:6px;align-items:center;margin-top:7px;}
 .setedit input{border:1.5px solid var(--line);border-radius:8px;padding:7px;font-size:15px;text-align:center;background:#fff;color:var(--ink);width:100%;}
 .setedit .cap{font-size:12px;font-weight:700;color:var(--muted);}
 .mini{font-size:10.5px;color:var(--muted);text-align:center;}
@@ -241,48 +249,48 @@ var DBRAW=[
 function mkDB(a){return a.map(function(r,i){return {id:"db"+i,g:r[0],n:r[1],s:r[2],reps:r[3],rest:r[4],sh:r[5],note:r[6]};});}
 var DB=mkDB(DBRAW);
 
-var PROGRAM_VERSION="2026-09";
+var PROGRAM_VERSION="2026-11-M1";
 var PRESET={order:["A","B","C","D"],week:{MO:"A",TU:"B",WE:null,TH:"C",FR:"D",SA:null,SU:null},sessions:{
-A:{title:"Petto + Bicipiti",groups:["Petto","Bicipiti"],ex:[
- {n:"Spinte bilanciere panca inclinata",sh:"cautela",reps:["12","10","8","6"],rest:[90,90,120,120]},
- {n:"Spinte manubri su panca piana",sh:"ok",reps:["10","8","6","6"],rest:[90,90,120,120]},
- {n:"Pec deck",sh:"cautela",reps:["10","10","10"],rest:[90,90,120]},
- {n:"Croci ai cavi alti",sh:"ok",reps:["12","12","12"],rest:[60,60,120]},
- {n:"Curl manubri panca 45",sh:"cautela",reps:["12","10","8","6"],rest:[60,90,90,90]},
- {n:"Hammer curl",sh:"ok",reps:["10","10","10"],rest:[90,90,120]},
- {n:"Curl barretta ai cavi",sh:"ok",reps:["12","12","12"],rest:[60,60,60]}]},
-B:{title:"Quadricipiti + Petto/Posteriori",groups:["Quadricipiti","Petto","Post./Trapezi"],ex:[
- {n:"Calf Press",sh:"ok",reps:["20","15","12","10"],rest:[60,60,60,60]},
- {n:"Adductor machine",sh:"ok",reps:["10","10","10"],rest:[60,60,60]},
- {n:"Hack Squat",sh:"ok",reps:["12","10","8","6"],rest:[90,90,120,120]},
- {n:"Leg Press",sh:"ok",reps:["10","8","6","6"],rest:[90,90,120,120]},
- {n:"Lex extension",sh:"ok",reps:["12","12","12"],rest:[60,60,90]},
- {n:"Croci ai cavi",sh:"ok",reps:["10","10","10"],rest:[60,60,60]},
- {n:"Pec back",sh:"ok",reps:["12","12","12"],rest:[60,60,60]}]},
-C:{title:"Spalle + Tricipiti",groups:["Spalle","Tricipiti"],ex:[
- {n:"Lento avanti multipower",sh:"rischio",reps:["12","10","8","6"],rest:[90,90,120,120]},
- {n:"Spinte manubri inclinata 60 presa neutra",sh:"ok",reps:["10","8","6","6"],rest:[90,90,120,120]},
- {n:"Alzate laterali manubri",sh:"cautela",reps:["10","10","10"],rest:[90,90,120]},
- {n:"Alzate laterali da seduto braccia tese",sh:"cautela",reps:["12","12","12"],rest:[60,60,120]},
- {n:"Panca stretta al multipower",sh:"ok",reps:["12","10","8","6"],rest:[60,90,90,90]},
- {n:"French press quadbar",sh:"cautela",reps:["10","10","10"],rest:[90,90,120]},
- {n:"Push down cavi o maniglie separate",sh:"ok",reps:["12","12","12"],rest:[60,60,60]}]},
-D:{title:"Femorali + Schiena",groups:["Femorali","Schiena"],ex:[
- {n:"Good morning",sh:"ok",reps:["12","10","10","8"],rest:[60,90,90,120]},
- {n:"Stacco rumeno",sh:"ok",reps:["12","10","8","6"],rest:[90,90,120,120]},
- {n:"Leg curl disteso",sh:"ok",reps:["10","10","10"],rest:[90,90,120]},
- {n:"Rematore bilanciere",sh:"ok",reps:["12","10","8","6"],rest:[90,90,120,120]},
- {n:"Lat machine presa stretta",sh:"ok",reps:["10","8","6","6"],rest:[90,90,120,120]},
- {n:"Rowing machine",sh:"ok",reps:["10","10","10"],rest:[90,90,120]},
- {n:"Scrollate manubri petto su panca 30",sh:"ok",reps:["12","12","12"],rest:[60,60,60]}]}
+A:{title:"M1 · Upper A",groups:["Petto","Schiena","Spalle","Bicipiti","Tricipiti"],ex:[
+ {n:"Panca inclinata manubri 30° (presa neutra)",sh:"cautela",r:"6–10",rest:150,plan:[3,3,4,4,4]},
+ {n:"Rematore a petto appoggiato (T-bar o macchina)",sh:"ok",r:"8–10",rest:120,plan:[3,3,4,4,4]},
+ {n:"Chest press alla macchina",sh:"ok",r:"10–12",rest:120,plan:[2,2,2,3,3]},
+ {n:"Pulley basso presa neutra",sh:"ok",r:"10–12",rest:120,plan:[2,2,2,3,3]},
+ {n:"Alzate laterali manubri (piano scapolare)",sh:"cautela",r:"12–15",rest:75,plan:[3,3,4,4,4],note:"Sett. 4–5: myo-reps sull'ultima serie."},
+ {n:"Curl panca Scott",sh:"ok",r:"10–12",rest:75,plan:[2,2,2,3,3],note:"Alternato con il pushdown."},
+ {n:"Pushdown al cavo con corda",sh:"ok",r:"10–15",rest:75,plan:[2,2,2,3,3]}]},
+B:{title:"M1 · Lower A",groups:["Quadricipiti","Femorali","Polpacci","Addome"],ex:[
+ {n:"Hack squat",sh:"ok",r:"6–10",rest:180,plan:[3,3,4,4,4]},
+ {n:"Leg press 45°",sh:"ok",r:"10–12",rest:150,plan:[2,2,2,3,3]},
+ {n:"Leg curl seduto",sh:"ok",r:"10–12",rest:90,plan:[3,3,3,3,3]},
+ {n:"Leg extension",sh:"ok",r:"12–15",rest:90,plan:[2,2,2,3,3],note:"Sett. 4–5: myo-reps sull'ultima serie."},
+ {n:"Calf in piedi alla macchina",sh:"ok",r:"8–12",rest:90,plan:[3,3,4,4,4],note:"Pausa 1″ in allungamento."},
+ {n:"Crunch al cavo",sh:"ok",r:"10–15",rest:60,plan:[3,3,3,3,3]}]},
+C:{title:"M1 · Upper B",groups:["Spalle","Schiena","Petto","Bicipiti","Tricipiti"],ex:[
+ {n:"Spinte manubri 60° presa neutra",sh:"ok",r:"6–10",rest:150,plan:[3,3,4,4,4]},
+ {n:"Lat machine presa larga prona",sh:"ok",r:"8–12",rest:120,plan:[3,3,4,4,4]},
+ {n:"Pec deck",sh:"cautela",r:"12–15",rest:90,plan:[2,2,2,3,3]},
+ {n:"Rematore con manubrio a un braccio",sh:"ok",r:"8–12",rest:90,plan:[2,2,2,3,3]},
+ {n:"Reverse pec deck",sh:"ok",r:"12–15",rest:60,plan:[3,3,3,3,3],note:"Sett. 4–5: myo-reps sull'ultima serie."},
+ {n:"Curl manubri in piedi",sh:"ok",r:"8–12",rest:75,plan:[2,2,2,3,3],note:"Alternato con le estensioni."},
+ {n:"Estensioni tricipiti sopra la testa al cavo",sh:"cautela",r:"10–12",rest:75,plan:[2,2,2,3,3]}]},
+D:{title:"M1 · Lower B",groups:["Femorali","Glutei","Quadricipiti","Polpacci","Addome"],ex:[
+ {n:"Stacco rumeno con manubri",sh:"ok",r:"8–10",rest:150,plan:[3,3,4,4,4],note:"Carico moderato, schiena neutra."},
+ {n:"Leg curl sdraiato",sh:"ok",r:"10–12",rest:90,plan:[3,3,3,3,3]},
+ {n:"Hip thrust (macchina o bilanciere)",sh:"ok",r:"8–12",rest:120,plan:[3,3,3,3,3]},
+ {n:"Pressa piedi alti e larghi",sh:"ok",r:"10–12",rest:120,plan:[2,2,2,3,3]},
+ {n:"Calf seduto",sh:"ok",r:"12–15",rest:60,plan:[3,3,4,4,4],note:"Sett. 4–5: myo-reps sull'ultima serie."},
+ {n:"Leg raise alla sbarra o ab wheel",sh:"ok",r:"10–15",rest:60,plan:[3,3,3,3,3]}]}
 }};
 
 var DAYS=[["MO","Lun"],["TU","Mar"],["WE","Mer"],["TH","Gio"],["FR","Ven"],["SA","Sab"],["SU","Dom"]];
 var KEY="scheda_builder_v1";
-function expand(ex){var sets=ex.reps.map(function(rp,i){return {reps:String(rp),rest:(Array.isArray(ex.rest)?ex.rest[i]:ex.rest),load:""};});return {n:ex.n,sh:ex.sh||"ok",note:ex.note||"",sets:sets};}
-function defaultState(){var s={week:JSON.parse(JSON.stringify(PRESET.week)),order:PRESET.order.slice(),sessions:{},customDB:[],log:[],pv:PROGRAM_VERSION};PRESET.order.forEach(function(id){var ps=PRESET.sessions[id];s.sessions[id]={title:ps.title,groups:ps.groups.slice(),ex:ps.ex.map(expand)};});return s;}
+function expand(ex){var sets;if(ex.r){var mx=Math.max.apply(null,ex.plan);sets=[];for(var i=0;i<mx;i++)sets.push({reps:ex.r,rest:ex.rest,load:"",done:""});}else{sets=ex.reps.map(function(rp,i){return {reps:String(rp),rest:(Array.isArray(ex.rest)?ex.rest[i]:ex.rest),load:"",done:""};});}var o={n:ex.n,sh:ex.sh||"ok",note:ex.note||"",sets:sets};if(ex.plan)o.plan=ex.plan.slice();return o;}
+function isoDate(d){return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2);}
+function thisMonday(){var d=new Date();d.setHours(0,0,0,0);var k=(d.getDay()+6)%7;d.setDate(d.getDate()-k);return isoDate(d);}
+function defaultState(){var s={week:JSON.parse(JSON.stringify(PRESET.week)),order:PRESET.order.slice(),sessions:{},customDB:[],log:[],pv:PROGRAM_VERSION,meso:{start:thisMonday(),len:6}};PRESET.order.forEach(function(id){var ps=PRESET.sessions[id];s.sessions[id]={title:ps.title,groups:ps.groups.slice(),ex:ps.ex.map(expand)};});return s;}
 var S,hasLS=true;
-try{var raw=localStorage.getItem(KEY);S=raw?JSON.parse(raw):defaultState();localStorage.setItem("__t","1");localStorage.removeItem("__t");}catch(e){hasLS=false;S=defaultState();}if(!S.log)S.log=[];if(S.pv!==PROGRAM_VERSION){var __d=defaultState();S.sessions=__d.sessions;S.order=__d.order;S.week=__d.week;S.pv=PROGRAM_VERSION;save();}
+try{var raw=localStorage.getItem(KEY);S=raw?JSON.parse(raw):defaultState();localStorage.setItem("__t","1");localStorage.removeItem("__t");}catch(e){hasLS=false;S=defaultState();}if(!S.log)S.log=[];if(S.pv!==PROGRAM_VERSION){var __d=defaultState();S.sessions=__d.sessions;S.order=__d.order;S.week=__d.week;S.pv=PROGRAM_VERSION;S.meso=__d.meso;save();}
 function save(){if(!hasLS)return;try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){hasLS=false;}}
 function effDB(){return DB.concat((S.customDB||[]).map(function(x,i){return {id:"cu"+i,g:x.g,n:x.n,s:x.s,reps:x.reps,rest:x.rest,sh:x.sh,note:x.note||""};}));}
 
@@ -328,11 +336,14 @@ function viewOggi(){
   var id=S.week[selDay];
   var body='<main>';
   if(!id){body+='<div class="eyebrow">Riposo</div><div class="empty">Giorno di riposo. Tocca un altro giorno o attiva un allenamento in Piano.</div>';}
-  else{var s=S.sessions[id];body+='<div class="eyebrow">'+esc(s.title)+'</div><button class="btn p wide" data-act="logsession" style="margin:2px 0 10px">Registra la sessione di oggi</button>';
+  else{var s=S.sessions[id];body+=mesoBar()+'<div class="eyebrow">'+esc(s.title)+'</div><button class="btn p wide" data-act="logsession" style="margin:2px 0 10px">Registra la sessione di oggi</button>';
     s.ex.forEach(function(ex,ei){
-      body+='<div class="card"><div class="exhead"><span class="dot '+ex.sh+'"></span><div class="exname">'+esc(ex.n)+'</div></div>';
-      ex.sets.forEach(function(st,xi){
+      ensureSets(ex);var nShow=Math.min(planCount(ex),ex.sets.length);var le=lastEntry(id,ex.n);
+      body+='<div class="card"><div class="exhead"><span class="dot '+ex.sh+'"></span><div class="exname">'+esc(ex.n)+'</div>'+(readyUp(le)?'<span class="up">\u2191 carico</span>':'')+'</div>';
+      ex.sets.slice(0,nShow).forEach(function(st,xi){
+        var ph=(le&&le.reps&&le.reps[xi])?le.reps[xi]:"\u2013";
         body+='<div class="setline"><span class="si">'+(xi+1)+'</span><span class="rp">'+esc(st.reps)+' <span class="rc">rip</span></span><span class="rc">'+restBtn(st.rest)+'</span>'+
+          '<div class="kg rr'+(st.done?" f":"")+'"><input inputmode="numeric" data-done data-s="'+id+'" data-e="'+ei+'" data-x="'+xi+'" value="'+esc(st.done||"")+'" placeholder="'+esc(ph)+'"><span class="u">rip</span></div>'+
           '<div class="kg'+(st.load?" f":"")+'"><input inputmode="decimal" data-load data-s="'+id+'" data-e="'+ei+'" data-x="'+xi+'" value="'+esc(st.load)+'" placeholder="\u2013"><span class="u">kg</span></div></div>';
       });
       if(ex.note) body+='<div class="note" style="padding:0 14px 10px">'+esc(ex.note)+'</div>';
@@ -344,6 +355,14 @@ function viewOggi(){
   body+='</main>';
   return head+body;
 }
+function parseD(x){var p=(x||"").split("-");return p.length===3?new Date(+p[0],+p[1]-1,+p[2]):null;}
+function mesoInfo(){var m=S.meso;if(!m||!m.start)return null;var st=parseD(m.start);if(!st)return null;var t=new Date();t.setHours(0,0,0,0);var diff=Math.round((t-st)/86400000);var len=m.len||6;var w=diff<0?1:Math.floor(diff/7)+1;return {w:w,len:len,deload:w===len,over:w>len,notyet:diff<0,start:st};}
+function planCount(ex){if(!ex.plan||!ex.plan.length)return ex.sets.length;var mi=mesoInfo();var n;if(!mi)n=ex.plan[0];else if(mi.deload||mi.over)n=Math.max(1,Math.ceil(ex.plan[ex.plan.length-1]/2));else n=ex.plan[Math.min(mi.w,ex.plan.length)-1];return Math.max(1,n||1);}
+function ensureSets(ex){if(!ex.plan)return;var mx=Math.max.apply(null,ex.plan);while(ex.sets.length<mx){var l=ex.sets[ex.sets.length-1]||{reps:"10",rest:60};ex.sets.push({reps:l.reps,rest:l.rest,load:"",done:""});}}
+function topReps(r){var m=String(r||"").match(/\d+/g);return m?+m[m.length-1]:0;}
+function lastEntry(sid,name){for(var i=S.log.length-1;i>=0;i--){var e=S.log[i];if(e.s!==sid)continue;var m=(e.ex||[]).filter(function(x){return x.n===name;})[0];if(m)return m;}return null;}
+function readyUp(m){if(!m||!m.reps||!m.reps.length)return false;for(var i=0;i<m.reps.length;i++){if(!m.loads[i]||!m.reps[i])return false;if(+m.reps[i]<topReps(m.tgt?m.tgt[i]:""))return false;}return true;}
+function mesoBar(){var mi=mesoInfo();if(!mi)return "";var sub=mi.notyet?("Inizia luned\u00ec "+("0"+mi.start.getDate()).slice(-2)+"/"+("0"+(mi.start.getMonth()+1)).slice(-2)):(mi.over?"Mesociclo concluso: imposta il nuovo in Piano":(mi.deload?"Deload: serie dimezzate, carico \u221210%, RIR 4":"Serie secondo la progressione"));var title=mi.over?"Mesociclo concluso":("Settimana "+mi.w+" di "+mi.len+(mi.deload?" \u00b7 DELOAD":""));return '<div class="meso'+(mi.deload?" dl":"")+'"><button class="iconbtn" data-act="mesoshift" data-dir="-1">\u2039</button><div style="flex:1"><div class="mt">'+title+'</div><div class="ms">'+sub+'</div></div><button class="iconbtn" data-act="mesoshift" data-dir="1">\u203a</button></div>';}
 function onCount(){return DAYS.filter(function(d){return !!S.week[d[0]];}).length;}
 
 function viewPiano(){
@@ -356,6 +375,11 @@ function viewPiano(){
        '</div>';
   });
   h+='</div>';
+  var mm=S.meso||{start:"",len:6};var mi=mesoInfo();
+  h+='<div class="eyebrow" style="margin-top:16px">Mesociclo</div><div class="exedit">'+
+     '<div class="lbl" style="margin-top:0">Luned\u00ec della settimana 1</div><input type="date" class="field" data-act="mesostart" value="'+esc(mm.start||"")+'">'+
+     '<div class="lbl">Durata (settimane, l\'ultima \u00e8 deload)</div><input inputmode="numeric" class="field" data-act="mesolen" value="'+(mm.len||6)+'">'+
+     '<div class="note">'+(mi?(mi.over?"Mesociclo concluso.":("Oggi: settimana "+mi.w+" di "+mi.len+(mi.deload?" (deload)":"")+".")):"Imposta la data di inizio per attivare la progressione delle serie.")+' Settimana persa? Usa \u2039 in Oggi per ripeterla.</div></div>';
   h+='<div class="eyebrow" style="margin-top:16px">Sessioni</div>';
   S.order.forEach(function(id){var s=S.sessions[id];
     h+='<div class="sesscard" data-act="editsess" data-id="'+id+'"><span class="sid">'+id+'</span><div><div class="st">'+esc(s.title)+'</div><div class="sg">'+esc(s.groups.join(" \u00b7 "))+' \u00b7 '+s.ex.length+' esercizi</div></div><span class="chev">\u203a</span></div>';
@@ -378,9 +402,12 @@ function viewSessEdit(){
        '<button class="iconbtn" data-act="moveex" data-e="'+ei+'" data-dir="1">\u2193</button>'+
        '<button class="iconbtn" data-act="delex" data-e="'+ei+'">\u00d7</button></div>';
     if(ex.note) h+='<div class="note">'+esc(ex.note)+'</div>';
-    h+='<div class="setedit"><span></span><span class="cap">rip</span><span class="cap">rec (s)</span><span></span></div>';
+    var pl=ex.plan||[ex.sets.length,ex.sets.length,ex.sets.length,ex.sets.length,ex.sets.length];
+    h+='<div class="lbl">Serie per settimana (S1\u2013S'+pl.length+')</div><div class="planrow">'+pl.map(function(v,wi){return '<input inputmode="numeric" data-plan data-e="'+ei+'" data-w="'+wi+'" value="'+v+'">';}).join("")+'<span class="mini">deload '+Math.max(1,Math.ceil(pl[pl.length-1]/2))+'</span></div>';
+    h+='<div class="setedit" style="margin-top:10px"><span></span><span class="cap">rip obiettivo</span><span class="cap">rec (s)</span><span></span></div>';
     ex.sets.forEach(function(st,xi){
-      h+='<div class="setedit"><span class="cap">'+(xi+1)+'</span>'+
+      var fw=0;if(ex.plan){for(var w=0;w<ex.plan.length;w++){if(ex.plan[w]>xi){fw=w+1;break;}}}
+      h+='<div class="setedit"><span class="cap">'+(xi+1)+(fw>1?'<div class="mini">da S'+fw+'</div>':(ex.plan&&!fw?'<div class="mini">extra</div>':''))+'</span>'+
          '<input data-set data-e="'+ei+'" data-x="'+xi+'" data-f="reps" value="'+esc(st.reps)+'">'+
          '<input inputmode="numeric" data-set data-e="'+ei+'" data-x="'+xi+'" data-f="rest" value="'+esc(String(st.rest))+'">'+
          '<button class="iconbtn" data-act="delset" data-e="'+ei+'" data-x="'+xi+'">\u00d7</button></div>';
@@ -444,19 +471,25 @@ function viewMenu(){
 function addFromDB(id){var x=effDB().filter(function(e){return e.id===id;})[0];if(!x)return;var sets=[];for(var i=0;i<x.s;i++)sets.push({reps:x.reps,rest:x.rest,load:""});S.sessions[picker].ex.push({n:x.n,sh:x.sh,note:x.note||"",sets:sets});save();}
 
 function todayLabel(){var d=new Date();return ("0"+d.getDate()).slice(-2)+"/"+("0"+(d.getMonth()+1)).slice(-2);}
-function logSession(){var sid=S.week[selDay];if(!sid)return;var snap={ts:Date.now(),d:todayLabel(),s:sid,ex:S.sessions[sid].ex.map(function(ex){return {n:ex.n,loads:ex.sets.map(function(st){return st.load||"";})};})};S.log.push(snap);save();toast("Sessione registrata");render();}
-function histRows(sid,name){var rows=S.log.filter(function(e){return e.s===sid;}).map(function(e){var m=(e.ex||[]).filter(function(x){return x.n===name;})[0];return m?{ts:e.ts,d:e.d,loads:m.loads}:null;}).filter(Boolean).reverse();if(!rows.length)return '<div class="note" style="padding:0 14px 12px">Nessuna sessione registrata.</div>';return '<div style="padding:0 14px 12px">'+rows.map(function(r){var ld=r.loads.map(function(x){return x!==""?x:"–";}).join(" · ");return '<div class="entry"><span class="dt">'+r.d+'</span><span class="v">'+esc(ld)+' kg</span><button class="del" data-act="dellog" data-ts="'+r.ts+'">×</button></div>';}).join("")+'</div>';}
+function logSession(){var sid=S.week[selDay];if(!sid)return;var mi=mesoInfo();var snap={ts:Date.now(),d:todayLabel(),s:sid,w:(mi&&!mi.over&&!mi.notyet)?mi.w:null,ex:S.sessions[sid].ex.map(function(ex){var sl=ex.sets.slice(0,Math.min(planCount(ex),ex.sets.length));return {n:ex.n,loads:sl.map(function(st){return st.load||"";}),reps:sl.map(function(st){return st.done||"";}),tgt:sl.map(function(st){return st.reps;})};})};S.log.push(snap);S.sessions[sid].ex.forEach(function(ex){ex.sets.forEach(function(st){st.done="";});});save();toast("Sessione registrata");render();}
+function histRows(sid,name){var rows=S.log.filter(function(e){return e.s===sid;}).map(function(e){var m=(e.ex||[]).filter(function(x){return x.n===name;})[0];return m?{ts:e.ts,d:e.d,w:e.w,loads:m.loads,reps:m.reps||[]}:null;}).filter(Boolean).reverse();if(!rows.length)return '<div class="note" style="padding:0 14px 12px">Nessuna sessione registrata.</div>';return '<div style="padding:0 14px 12px">'+rows.map(function(r){var ld=r.loads.map(function(x,i){var rp=r.reps[i]||"";return (x!==""?x:"–")+(rp?"×"+rp:"");}).join(" · ");return '<div class="entry"><span class="dt">'+r.d+(r.w?'<div class="mini" style="text-align:left">S'+r.w+'</div>':'')+'</span><span class="v">'+esc(ld)+' kg</span><button class="del" data-act="dellog" data-ts="'+r.ts+'">×</button></div>';}).join("")+'</div>';}
 function wire(){
   var app=document.getElementById("app");
   app.oninput=function(e){
     var t=e.target;
     if(t.hasAttribute("data-load")){var s=t.getAttribute("data-s"),ei=+t.getAttribute("data-e"),xi=+t.getAttribute("data-x");S.sessions[s].ex[ei].sets[xi].load=t.value.trim();t.parentNode.classList.toggle("f",!!t.value.trim());save();}
+    else if(t.hasAttribute("data-done")){var sd=t.getAttribute("data-s"),eid=+t.getAttribute("data-e"),xid=+t.getAttribute("data-x");S.sessions[sd].ex[eid].sets[xid].done=t.value.replace(/[^0-9]/g,"");t.parentNode.classList.toggle("f",!!t.value.trim());save();}
     else if(t.hasAttribute("data-set")){var ei2=+t.getAttribute("data-e"),xi2=+t.getAttribute("data-x"),f=t.getAttribute("data-f");var v=t.value;if(f==="rest")v=v.replace(/[^0-9]/g,"");S.sessions[sessEdit].ex[ei2].sets[xi2][f]=(f==="rest"?(+v||0):v);save();}
     else if(t.hasAttribute("data-sesstitle")){S.sessions[sessEdit].title=t.value;save();}
     else if(t.id==="eq"){filt.q=t.value;document.getElementById("elist").innerHTML=eListHTML();}
     else if(t.id==="pq"){filt.q=t.value;var pl=document.getElementById("plist");if(pl)pl.innerHTML=plistRows();}
   };
-  app.onchange=function(e){var t=e.target;if(t.hasAttribute("data-act")&&t.getAttribute("data-act")==="assignday"){S.week[t.getAttribute("data-d")]=t.value;save();render();}};
+  app.onchange=function(e){var t=e.target;var ac=t.getAttribute("data-act");
+    if(ac==="assignday"){S.week[t.getAttribute("data-d")]=t.value;save();render();}
+    else if(ac==="mesostart"){S.meso=S.meso||{len:6};S.meso.start=t.value;save();render();}
+    else if(ac==="mesolen"){S.meso=S.meso||{start:thisMonday()};S.meso.len=Math.max(2,Math.min(12,+t.value||6));save();render();}
+    else if(t.hasAttribute("data-plan")){var ex=S.sessions[sessEdit].ex[+t.getAttribute("data-e")];if(!ex.plan){var n0=ex.sets.length;ex.plan=[n0,n0,n0,n0,n0];}var v=Math.max(1,Math.min(12,+t.value||1));ex.plan[+t.getAttribute("data-w")]=v;ensureSets(ex);save();render();}
+  };
   app.onclick=function(e){
     var el=e.target.closest("[data-act]");if(!el)return;var a=el.getAttribute("data-act");
     if(a==="nav"){view=el.getAttribute("data-v");sessEdit=null;picker=null;render();}
@@ -477,6 +510,7 @@ function wire(){
     else if(a==="newsess"){var nid=nextId();S.sessions[nid]={title:"Nuova sessione",groups:[],ex:[]};S.order.push(nid);save();sessEdit=nid;render();}
     else if(a==="delsess"){if(confirm("Eliminare la sessione "+sessEdit+"?")){var id=sessEdit;delete S.sessions[id];S.order=S.order.filter(function(x){return x!==id;});for(var k in S.week)if(S.week[k]===id)S.week[k]=null;save();sessEdit=null;render();}}
     else if(a==="newexercise"){var n=document.getElementById("ne_n").value.trim();if(!n){toast("Inserisci il nome");return;}S.customDB=S.customDB||[];S.customDB.push({g:document.getElementById("ne_g").value,n:n,s:(+document.getElementById("ne_s").value||3),reps:(document.getElementById("ne_r").value||"10"),rest:(+document.getElementById("ne_rest").value||60),sh:document.getElementById("ne_sh").value,note:""});save();toast("Esercizio creato");render();}
+    else if(a==="mesoshift"){var mi=mesoInfo();if(!mi)return;var dir=+el.getAttribute("data-dir");var st=new Date(mi.start);st.setDate(st.getDate()-7*dir);S.meso.start=isoDate(st);save();render();toast(dir>0?"Settimana avanti":"Settimana indietro");}
     else if(a==="timer"){startTimer(+el.getAttribute("data-sec"));}
     else if(a==="logsession"){logSession();}
     else if(a==="togglehist"){var eih=+el.getAttribute("data-e");openHist[eih]=!openHist[eih];render();}
@@ -485,7 +519,7 @@ function wire(){
     else if(a==="backup"){doBackup();}
     else if(a==="restore"){document.getElementById("file").click();}
     else if(a==="wipeloads"){if(confirm("Azzerare tutti i carichi inseriti?")){for(var si in S.sessions)S.sessions[si].ex.forEach(function(ex){ex.sets.forEach(function(st){st.load="";});});save();render();toast("Carichi azzerati");}}
-    else if(a==="resetpreset"){if(confirm("Ripristinare la scheda originale? Le modifiche andranno perse.")){S=defaultState();save();sessEdit=null;view="oggi";render();toast("Scheda ripristinata");}}
+    else if(a==="resetpreset"){if(confirm("Ripristinare la scheda predefinita (M1)? Le modifiche alle sessioni andranno perse; storico ed esercizi personali restano.")){var keepLog=S.log||[],keepCu=S.customDB||[];S=defaultState();S.log=keepLog;S.customDB=keepCu;save();sessEdit=null;view="oggi";render();toast("Scheda ripristinata");}}
   };
   document.getElementById("tabbar").onclick=app.onclick;
   if(!hasLS){var b=document.getElementById("banner");if(b)b.style.display="block";}
